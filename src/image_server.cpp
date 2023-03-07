@@ -15,35 +15,9 @@
 
 using boost::asio::ip::tcp;
 
-//std::vector<uint8_t> get_image()
-//{
-//  return std::vector<uint8_t>();
-//}
-std::vector<uint8_t> get_image(const std::string& filename) {
-    // Open the file for binary input
-    std::ifstream file(filename, std::ios::binary);
-    if (!file.is_open()) {
-        std::cerr << "Error: Failed to open file " << filename << std::endl;
-        return {};
-    }
-
-    // Determine the file size
-    file.seekg(0, std::ios::end);
-    std::streamsize size = file.tellg();
-    file.seekg(0, std::ios::beg);
-
-    // Allocate a vector to hold the file contents
-    std::vector<uint8_t> buffer(size);
-
-    // Read the file contents into the vector
-    if (!file.read(reinterpret_cast<char*>(buffer.data()), size)) {
-        std::cerr << "Error: Failed to read file " << filename << std::endl;
-        return {};
-    }
-
-    // Close the file and return the vector
-    file.close();
-    return buffer;
+std::vector<uint8_t> get_image()
+{
+  return std::vector<uint8_t>();
 }
 
 int main()

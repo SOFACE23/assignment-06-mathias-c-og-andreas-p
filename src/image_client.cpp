@@ -16,27 +16,9 @@ using boost::asio::ip::tcp;
 
 constexpr size_t image_size = 100*100;
 
-//void save_image(char* data, size_t len)
-//{
+void save_image(char* data, size_t len)
+{
   // TODO
-//}
-
-void save_image(const std::vector<uint8_t>& data, const std::string& filename) {
-    // Open the file for binary output
-    std::ofstream file(filename, std::ios::binary);
-    if (!file.is_open()) {
-        std::cerr << "Error: Failed to open file " << filename << std::endl;
-        return;
-    }
-
-    // Write the file contents from the vector
-    if (!file.write(reinterpret_cast<const char*>(data.data()), data.size())) {
-        std::cerr << "Error: Failed to write file " << filename << std::endl;
-        return;
-    }
-
-    // Close the file
-    file.close();
 }
 
 int main(int argc, char* argv[])
