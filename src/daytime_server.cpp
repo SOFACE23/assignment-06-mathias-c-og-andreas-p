@@ -15,14 +15,22 @@
 
 using boost::asio::ip::tcp;
 
-std::string make_daytime_string() //Create a string containing the current date and time
+std::vector<uint32_t> readFile(const char* filename)
 {
-  using namespace std; // For time_t, time and ctime;
-  time_t now = time(0);
-  return ctime(&now);
-}
+    // open the file:
+    std::streampos fileSize;
+    std::ifstream file(filename, std::ios::binary);
 
-int main()
+    // get its size:
+    file.seekg(0, std::ios::end);
+    fileSize = file.tellg();
+    file.seekg(0, std::ios::beg);
+
+    // read the data:
+    std::vector<uint32_t> fileData(fileSize);
+    file.read((char*) &fileData[0], fileSize);
+    return fileData;
+}
 {
   try
   {
