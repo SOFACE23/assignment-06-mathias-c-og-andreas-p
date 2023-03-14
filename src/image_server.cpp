@@ -49,7 +49,7 @@ int main()
       acceptor.accept(socket);
 
       // send image
-      auto message = get_image();
+      auto message = get_image("cat.jpg");
 
       
       boost::system::error_code ignored_error;
