@@ -15,6 +15,14 @@
 
 using boost::asio::ip::tcp;
 
+std::string make_daytime_string() //Create a string contaning the current date and time
+{
+  using namespace std; //For time_t, time and ctime
+  time_t now = time(0);
+  return ctime(&now);
+}
+
+int main()
 {
   try
   {
