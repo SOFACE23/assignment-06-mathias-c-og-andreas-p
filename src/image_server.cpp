@@ -24,17 +24,22 @@ int main()
 {
   try
   {
+    // create io_context
     boost::asio::io_context io_context;
 
+    // create acceptor
     tcp::acceptor acceptor(io_context, tcp::endpoint(tcp::v4(), 13));
 
     while (true)
     {
+      // accept connection
       tcp::socket socket(io_context);
       acceptor.accept(socket);
 
+      // send image
       auto message = get_image();
 
+      
       boost::system::error_code ignored_error;
       boost::asio::write(socket, boost::asio::buffer(message), ignored_error);
     }

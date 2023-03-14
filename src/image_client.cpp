@@ -18,7 +18,7 @@ constexpr size_t image_size = 100*100;
 
 void save_image(char* data, size_t len)
 {
-  // TODO
+  // save image to file
   std::ofstream file("copycat.jpg", std::ios::binary);
   file.write(data, len)
 }
@@ -32,16 +32,19 @@ int main(int argc, char* argv[])
       std::cerr << "Usage: client <host>" << std::endl;
       return 1;
     }
-
+    // create io_context
     boost::asio::io_context io_context;
 
+    // resolve server address and port
     tcp::resolver resolver(io_context);
     tcp::resolver::results_type endpoints =
       resolver.resolve(argv[1], "daytime");
 
+    // connect to server
     tcp::socket socket(io_context);
     boost::asio::connect(socket, endpoints);
-
+    
+    // read image from server
     while(true)
     {
       boost::array<char, image_size> buf;
