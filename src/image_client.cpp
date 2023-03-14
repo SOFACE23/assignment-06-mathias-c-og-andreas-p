@@ -20,7 +20,7 @@ void save_image(char* data, size_t len)
 {
   // save image to file
   std::ofstream file("copycat.jpg", std::ios::binary);
-  file.write(data, len)
+  file.write(data, len);
 }
 
 int main(int argc, char* argv[])
