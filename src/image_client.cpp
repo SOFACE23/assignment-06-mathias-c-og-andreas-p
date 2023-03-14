@@ -14,7 +14,7 @@
 
 using boost::asio::ip::tcp;
 
-constexpr size_t image_size = 100*100;
+constexpr size_t image_size = 17618;
 
 void save_image(char* data, size_t len)
 {
